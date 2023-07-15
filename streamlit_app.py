@@ -16,6 +16,8 @@ my_fruit_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/da
 my_fruit_list = my_fruit_list.set_index('Fruit')
 
 # Selectable list for user
-st.multiselect("Pick some fruits:", list(my_fruit_list.index), ['Avocado','Strawberries'])
-
-st.dataframe(my_fruit_list) # display the list
+# Store fruit selected
+# Display fruits
+fruits_selected = st.multiselect("Pick some fruits:", list(my_fruit_list.index), ['Avocado','Strawberries'])
+fruits_to_show = my_fruit_list.loc[fruits_selected]
+st.dataframe(fruits_selected) # display the fruit
